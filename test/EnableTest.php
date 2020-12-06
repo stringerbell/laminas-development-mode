@@ -59,6 +59,9 @@ class EnableTest extends TestCase
         }
     }
 
+    /**
+     * @return false|string
+     */
     public function readErrorStream()
     {
         fseek($this->errorStream, 0);

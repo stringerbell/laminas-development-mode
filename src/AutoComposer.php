@@ -30,7 +30,7 @@ use const STDERR;
  */
 class AutoComposer
 {
-    const COMPOSER_DEV_MODE = 'COMPOSER_DEV_MODE';
+    public const COMPOSER_DEV_MODE = 'COMPOSER_DEV_MODE';
 
     /** @var value of COMPOSER_DEV_MODE */
     private $composerDevMode;
@@ -38,12 +38,7 @@ class AutoComposer
     /** @var resource */
     private $errorStream;
 
-    private $expectedValues = [
-        '0', // production mode
-        '1', // development mode
-    ];
-
-    /** @param string Path to project. */
+    /** @var string Path to project. */
     private $projectDir;
 
     /**

@@ -23,13 +23,13 @@ class Disable
 {
     use ConfigDiscoveryTrait;
 
-    const DEVEL_CONFIG = 'config/development.config.php';
-    const DEVEL_LOCAL  = 'config/autoload/development.local.php';
+    public const DEVEL_CONFIG = 'config/development.config.php';
+    public const DEVEL_LOCAL  = 'config/autoload/development.local.php';
 
     /** @var resource */
     private $errorStream;
 
-    /** @param string Path to project. */
+    /** @var string Path to project. */
     private $projectDir;
 
     /**

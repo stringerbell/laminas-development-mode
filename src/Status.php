@@ -15,9 +15,9 @@ use const PHP_EOL;
 
 class Status
 {
-    const DEVEL_CONFIG = 'config/development.config.php';
+    public const DEVEL_CONFIG = 'config/development.config.php';
 
-    /** @param string */
+    /** @var string */
     private $develConfigFile;
 
     /**

@@ -113,8 +113,8 @@ trait ConfigDiscoveryTrait
      * Raises an exception if retrieved configuration is not an array.
      *
      * @return array
-     * @throws RuntimeException if config/application.config.php does not
-     *     return an array
+     * @throws RuntimeException If config/application.config.php does not
+     *     return an array.
      */
     private function getApplicationConfig()
     {

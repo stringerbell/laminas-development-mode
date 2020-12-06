@@ -27,15 +27,15 @@ class Enable
 {
     use ConfigDiscoveryTrait;
 
-    const DEVEL_CONFIG      = 'config/development.config.php';
-    const DEVEL_CONFIG_DIST = 'config/development.config.php.dist';
-    const DEVEL_LOCAL       = 'config/autoload/development.local.php';
-    const DEVEL_LOCAL_DIST  = 'config/autoload/development.local.php.dist';
+    public const DEVEL_CONFIG      = 'config/development.config.php';
+    public const DEVEL_CONFIG_DIST = 'config/development.config.php.dist';
+    public const DEVEL_LOCAL       = 'config/autoload/development.local.php';
+    public const DEVEL_LOCAL_DIST  = 'config/autoload/development.local.php.dist';
 
     /** @var resource */
     private $errorStream;
 
-    /** @param string Path to project. */
+    /** @var string Path to project. */
     private $projectDir;
 
     /**

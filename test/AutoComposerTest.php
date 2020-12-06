@@ -10,7 +10,6 @@ namespace LaminasTest\DevelopmentMode;
 
 use Laminas\DevelopmentMode\AutoComposer;
 use org\bovigo\vfs\vfsStream;
-use org\bovigo\vfs\vfsStreamContainer;
 use PHPUnit\Framework\TestCase;
 
 use function fclose;
@@ -24,15 +23,12 @@ class AutoComposerTest extends TestCase
 {
     use RemoveCacheFileTrait;
 
-    /** @var vfsStreamContainer */
-    private $projectDir;
-
     /** @var resource */
     private $errorStream;
 
     public function setUp()
     {
-        $this->projectDir  = vfsStream::setup('project', null, [
+        vfsStream::setup('project', null, [
             'config' => [
                 'autoload' => [],
             ],
