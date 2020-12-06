@@ -13,6 +13,15 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamContainer;
 use PHPUnit\Framework\TestCase;
 
+use function fclose;
+use function file_exists;
+use function fopen;
+use function fread;
+use function fseek;
+use function is_resource;
+
+use const PHP_EOL;
+
 class EnableTest extends TestCase
 {
     use RemoveCacheFileTrait;
@@ -28,15 +37,15 @@ class EnableTest extends TestCase
 
     protected function setUp()
     {
-        $this->projectDir = vfsStream::setup('project', null, [
+        $this->projectDir  = vfsStream::setup('project', null, [
             'config' => [
                 'autoload' => [],
             ],
-            'cache' => [],
-            'data' => [],
+            'cache'  => [],
+            'data'   => [],
         ]);
         $this->errorStream = fopen('php://memory', 'w+');
-        $this->command = $this->getMockBuilder(Enable::class)
+        $this->command     = $this->getMockBuilder(Enable::class)
             ->setConstructorArgs([vfsStream::url('project'), $this->errorStream])
             ->setMethods(['supportsSymlinks'])
             ->getMock();

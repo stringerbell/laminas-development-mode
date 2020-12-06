@@ -10,12 +10,14 @@ namespace LaminasTest\DevelopmentMode;
 
 use org\bovigo\vfs\vfsStream;
 
+use function file_put_contents;
+
 trait RemoveCacheFileTrait
 {
     public function setUpDefaultCacheFile()
     {
-        $base = vfsStream::url('project');
-        $config = <<< EOC
+        $base   = vfsStream::url('project');
+        $config = <<<EOC
 <?php
 return [
     'module_listener_options' => [
@@ -30,8 +32,8 @@ EOC;
 
     public function setUpCustomCacheFile()
     {
-        $base = vfsStream::url('project');
-        $config = <<< EOC
+        $base   = vfsStream::url('project');
+        $config = <<<EOC
 <?php
 return [
     'module_listener_options' => [
@@ -47,8 +49,8 @@ EOC;
 
     public function setUpDefaultMezzioCacheFile()
     {
-        $cache = vfsStream::url('project/data/config-cache.php');
-        $config = <<< EOC
+        $cache  = vfsStream::url('project/data/config-cache.php');
+        $config = <<<EOC
 <?php
 return [
     'config_cache_path' => '{$cache}',

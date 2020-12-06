@@ -13,6 +13,13 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamContainer;
 use PHPUnit\Framework\TestCase;
 
+use function fclose;
+use function fopen;
+use function is_resource;
+use function putenv;
+
+use const PHP_EOL;
+
 class AutoComposerTest extends TestCase
 {
     use RemoveCacheFileTrait;
@@ -25,12 +32,12 @@ class AutoComposerTest extends TestCase
 
     public function setUp()
     {
-        $this->projectDir = vfsStream::setup('project', null, [
+        $this->projectDir  = vfsStream::setup('project', null, [
             'config' => [
                 'autoload' => [],
             ],
-            'cache' => [],
-            'data' => [],
+            'cache'  => [],
+            'data'   => [],
         ]);
         $this->errorStream = fopen('php://memory', 'w+');
     }

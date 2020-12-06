@@ -8,6 +8,13 @@
 
 namespace Laminas\DevelopmentMode;
 
+use function array_shift;
+use function count;
+use function fwrite;
+
+use const PHP_EOL;
+use const STDERR;
+
 class Command
 {
     /**

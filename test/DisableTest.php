@@ -13,6 +13,16 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamContainer;
 use PHPUnit\Framework\TestCase;
 
+use function fclose;
+use function file_exists;
+use function file_put_contents;
+use function fopen;
+use function fread;
+use function fseek;
+use function is_resource;
+
+use const PHP_EOL;
+
 class DisableTest extends TestCase
 {
     use RemoveCacheFileTrait;
@@ -31,15 +41,15 @@ class DisableTest extends TestCase
 
     protected function setUp()
     {
-        $this->projectDir = vfsStream::setup('project', null, [
+        $this->projectDir  = vfsStream::setup('project', null, [
             'config' => [
                 'autoload' => [],
             ],
-            'cache' => [],
+            'cache'  => [],
         ]);
         $this->errorStream = fopen('php://memory', 'w+');
-        $this->configStub = '<' . "?php\nreturn [];";
-        $this->command = new Disable(vfsStream::url('project'), $this->errorStream);
+        $this->configStub  = '<' . "?php\nreturn [];";
+        $this->command     = new Disable(vfsStream::url('project'), $this->errorStream);
     }
 
     protected function tearDown()

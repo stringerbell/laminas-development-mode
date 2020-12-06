@@ -10,29 +10,28 @@ namespace Laminas\DevelopmentMode;
 
 use RuntimeException;
 
+use function file_exists;
+use function is_array;
+use function sprintf;
+use function unlink;
+
+use const PHP_EOL;
+
 /**
  * Shared functionality for the Disable/Enable commands.
  */
 trait ConfigDiscoveryTrait
 {
-    /**
-     * @var null|array
-     */
+    /** @var null|array */
     private $applicationConfig;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $applicationConfigPath = 'config/application.config.php';
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $mezzioConfigPath = 'config/config.php';
 
-    /**
-     * @var string Base name for configuration cache.
-     */
+    /** @var string Base name for configuration cache. */
     private $configCacheBase = 'module-config-cache';
 
     /**

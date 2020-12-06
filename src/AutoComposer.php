@@ -8,6 +8,14 @@
 
 namespace Laminas\DevelopmentMode;
 
+use function getenv;
+use function is_resource;
+use function printf;
+use function var_export;
+
+use const PHP_EOL;
+use const STDERR;
+
 /**
  * Automatically switch to and from development mode based on type of composer
  * install/update used.
@@ -24,14 +32,10 @@ class AutoComposer
 {
     const COMPOSER_DEV_MODE = 'COMPOSER_DEV_MODE';
 
-    /**
-     * @var value of COMPOSER_DEV_MODE
-     */
+    /** @var value of COMPOSER_DEV_MODE */
     private $composerDevMode;
 
-    /**
-     * @var resource
-     */
+    /** @var resource */
     private $errorStream;
 
     private $expectedValues = [
@@ -39,9 +43,7 @@ class AutoComposer
         '1', // development mode
     ];
 
-    /**
-     * @param string Path to project.
-     */
+    /** @param string Path to project. */
     private $projectDir;
 
     /**
@@ -51,8 +53,8 @@ class AutoComposer
     public function __construct($projectDir = '', $errorStream = null)
     {
         $this->composerDevMode = getenv(self::COMPOSER_DEV_MODE);
-        $this->projectDir = $projectDir;
-        $this->errorStream = is_resource($errorStream) ? $errorStream : STDERR;
+        $this->projectDir      = $projectDir;
+        $this->errorStream     = is_resource($errorStream) ? $errorStream : STDERR;
     }
 
     /**

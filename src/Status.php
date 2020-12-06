@@ -8,13 +8,16 @@
 
 namespace Laminas\DevelopmentMode;
 
+use function file_exists;
+use function sprintf;
+
+use const PHP_EOL;
+
 class Status
 {
     const DEVEL_CONFIG = 'config/development.config.php';
 
-    /**
-     * @param string
-     */
+    /** @param string */
     private $develConfigFile;
 
     /**

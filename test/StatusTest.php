@@ -13,6 +13,9 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamContainer;
 use PHPUnit\Framework\TestCase;
 
+use function ob_get_clean;
+use function ob_start;
+
 class StatusTest extends TestCase
 {
     /** @var vfsStreamContainer */
